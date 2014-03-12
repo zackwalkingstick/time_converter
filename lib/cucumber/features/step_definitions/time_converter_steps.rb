@@ -1,3 +1,5 @@
+#require '~/lib/time_converter.rb'
+
 Given(/^I have entered (\d+):(\d+):(\d+)$/) do |arg1, arg2, arg3|
   @converter = Time_Converter.new(arg1, arg2, arg3)
 end
