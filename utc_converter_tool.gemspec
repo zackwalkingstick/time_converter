@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
 	s.name        = 'utc_converter_tool'
-	s.version     = '0.0.5'
+	s.version     = '0.0.7'
 	s.date        = '2014-03-11'
 	s.summary     = 'UTC time zone converter'
 	s.description = 'This gem is intended to convert UTC time to other time zones'
@@ -8,5 +8,5 @@ Gem::Specification.new do |s|
 	s.email       = 'zackwalkingstick@gmail.com'
 	s.homepage    = 'http://rubygems.org/gems/utc_converter_tool'
 	s.licenses    = ['GPL-3.0']
-	s.files       = ["lib/time_converter.rb"]
+	s.files       = ["lib/utc_converter_tool.rb"]
 	end

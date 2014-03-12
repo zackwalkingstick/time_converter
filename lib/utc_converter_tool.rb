@@ -1,4 +1,4 @@
-class TimeConverter
+class Time_Converter
 
 	#list of Time zones and their UTC Offset
 	UTC_HOUR_OFFSET = {'HST'=>-10, 'AKST'=>-9, 'PST'=>-8,'MST'=>-7, 'CST'=>-6, 'EST'=>-5}
