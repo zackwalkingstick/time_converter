@@ -1,60 +1,33 @@
 class TimeConverter
 
+	#attr_accessor :selected_timezone
 	#list of Time zones and their UTC Offset
 	UTC_HOUR_OFFSET = {'HST'=>-10, 'AKST'=>-9, 'PST'=>-8,'MST'=>-7, 'CST'=>-6, 'EST'=>-5}
 
-	def initialize hours, minutes, seconds
-		@hours = hours
-		@minutes = minutes
-		@seconds = seconds
+	def initialize hours, minutes, seconds, selected_timezone
+		@hours = hours.to_i
+		@minutes = minutes.to_i
+		@seconds = seconds.to_i
+		@selected_timezone = selected_timezone.upcase
 	end
-
-	def selected_timezone selected_timezone
-		@selected_timezone = selected_timezone
-	end
-
 	
 	#------Conversion Methods------#
 	def convert
-		convert_hrs
-		convert_min
-		convert_sec
-		converted_time = "#{convert_hrs}:#{convert_min}:#{convert_sec}"
+		"#{convert_time utc_convert}:#{convert_time @minutes}:#{convert_time @seconds}"
 	end
 
-	def convert_hrs
-		UTC_Converter UTC_HOUR_OFFSET
-	end
-
-	def convert_min
-		@minutes
-	end
-
-	def convert_sec
-		@seconds
+	def convert_time arg
+		arg.to_s.length == 1? "0#{arg}": arg
 	end
 	#------Conversion Methods------#
 
 	#------Workhorse Converter-----#
-	def UTC_Converter hash
-		hash.each do |k, v|
-			if k == @selected_timezone
-			converted_hrs = (v.to_i + @hours.to_i) + 24
-				if converted_hrs == 25
-					return "0#{(converted_hrs - 24)}"
-				elsif converted_hrs == 10 or converted_hrs < 25
-					return "#{converted_hrs}"
-				elsif converted_hrs < 34
-					return "0#{(converted_hrs - 24)}"
-				elsif converted_hrs > 25
-					return "#{(converted_hrs - 24)}"
-				elsif converted_hrs > 10
-					return "0#{converted_hrs}"
-				elsif converted_hrs == 0
-					return "24"
-				end
-				return converted_hrs
-			end
+	def utc_convert
+		hour = @hours + UTC_HOUR_OFFSET[@selected_timezone]
+		if hour.to_s[0] == "-"
+			hour + 24
+		else
+			hour
 		end
 	end
 	#------Workhorse Converter-----#
