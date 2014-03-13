@@ -1,6 +1,5 @@
 class TimeConverter
 
-	#attr_accessor :selected_timezone
 	#list of Time zones and their UTC Offset
 	UTC_HOUR_OFFSET = {'HST'=>-10, 'AKST'=>-9, 'PST'=>-8,'MST'=>-7, 'CST'=>-6, 'EST'=>-5}
 
@@ -8,7 +7,7 @@ class TimeConverter
 		@hours = hours.to_i
 		@minutes = minutes.to_i
 		@seconds = seconds.to_i
-		@selected_timezone = selected_timezone.upcase
+		@selected_timezone = selected_timezone
 	end
 	
 	#------Conversion Methods------#
